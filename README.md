@@ -6,3 +6,6 @@ This is going to be a step by step guide starting with a simple and simulated sl
 
 ## Step 1 The slow application
 This is a simple and a very slow application for reading data from a slow database
+
+## Step 2 Basic Spring cache
+Let's add a simple cache integration

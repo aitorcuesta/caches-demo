@@ -3,8 +3,12 @@ package es.aitorcuesta.caches.demo;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +16,7 @@ import es.aitorcuesta.caches.demo.model.Book;
 import es.aitorcuesta.caches.demo.service.BookService;
 
 @Configuration
+@EnableCaching
 @ComponentScan
 public class CachesDemo {
 
@@ -25,6 +30,12 @@ public class CachesDemo {
 		logger.info("Ending invoking simple service");
 
 	}
+	
+	// Using with simple cache memory
+    @Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager();
+    }
 
 	private static void invokeService(BookService bookService) {
 		logger.info("Adding books...");

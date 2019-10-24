@@ -1,6 +1,7 @@
 package es.aitorcuesta.caches.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import es.aitorcuesta.caches.demo.dao.BookDao;
@@ -15,6 +16,7 @@ import es.aitorcuesta.caches.demo.model.Book;
 public class BookServiceImpl implements BookService {
 
 	@Autowired
+	@Qualifier("cachedBookDao")
 	private BookDao simpleBookDao;
 
 	@Override
