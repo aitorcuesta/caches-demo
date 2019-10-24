@@ -5,23 +5,19 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 import es.aitorcuesta.caches.demo.model.Book;
 import es.aitorcuesta.caches.demo.service.BookService;
 
-@Configuration
-@ComponentScan
 public class CachesDemo {
 
 	private static final Logger logger = Logger.getLogger(CachesDemo.class);
 
 	public static void main(String[] args) {
-		ApplicationContext appCtx = new AnnotationConfigApplicationContext(CachesDemo.class);
+		ApplicationContext appCtx = new AnnotationConfigApplicationContext(CachesDemoConfiguration.class);
 
 		logger.info("Invoking simple service");
-		invokeService((BookService) appCtx.getBean("simpleBookService"));
+		invokeService((BookService) appCtx.getBean("bookService"));
 		logger.info("Ending invoking simple service");
 
 	}
