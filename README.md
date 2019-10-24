@@ -12,3 +12,9 @@ Let's add a simple cache integration
 
 ## Step 3 JSR 107 Integration
 Let's change Spring cache to JCache
+
+## Step 4 Basic Coherence Integration
+Let´s use Coherence as local cache provider, things to care about:
+- coherence and coherence-jcache jars should be installed in local/nexus repository to be available
+- Everything to be cached by Coherence should be Serializable
+- For Spring integration Coherence CacheManager must be wrapped as a Spring Cache manager (JCacheCacheManager)

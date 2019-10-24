@@ -1,10 +1,18 @@
 package es.aitorcuesta.caches.demo.model;
+
+import java.io.Serializable;
+
 /**
  *  
  * @author aitorcuesta
  *
  */
-public class Book {
+public class Book implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private String isbn;           
     private String title;  
