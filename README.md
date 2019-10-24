@@ -9,3 +9,6 @@ This is a simple and a very slow application for reading data from a slow databa
 
 ## Step 2 Basic Spring cache
 Let's add a simple cache integration
+
+## Step 3 JSR 107 Integration
+Let's change Spring cache to JCache
