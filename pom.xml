@@ -9,6 +9,7 @@
         <spring.version>5.1.10.RELEASE</spring.version>
         <log4j.version>1.2.17</log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javax.cache.version>1.0.0</javax.cache.version>
     </properties>
   
     <dependencies>
@@ -22,6 +23,20 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+        <!-- javax.cache.cache-api (JSR 107) -->
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${javax.cache.version}</version>
+        </dependency>
+          
+        <!-- For integration between JSR 107 and Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
   

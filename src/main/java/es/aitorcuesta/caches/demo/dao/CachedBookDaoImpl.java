@@ -3,10 +3,12 @@ package es.aitorcuesta.caches.demo.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.cache.annotation.CachePut;
+import javax.cache.annotation.CacheRemove;
+import javax.cache.annotation.CacheResult;
+import javax.cache.annotation.CacheValue;
+
 import org.apache.log4j.Logger;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import es.aitorcuesta.caches.demo.model.Book;
@@ -26,7 +28,7 @@ public class CachedBookDaoImpl implements BookDao {
     }
   
     @Override 
-    @Cacheable(cacheNames = "books")
+    @CacheResult(cacheName = "books")
     public Book getBook(String isbn) {
         try {
             // Slow database :P
@@ -38,8 +40,8 @@ public class CachedBookDaoImpl implements BookDao {
     }
   
     @Override 
-    @CachePut(cacheNames = "books", key="#book.isbn")
-    public Book updateBook(String isbn, Book book) {
+    @CachePut(cacheName = "books")
+    public Book updateBook(String isbn, @CacheValue Book book) {
         Book retValue = null;
         if (null != book && null != isbn) {
             bookDatabase.put(isbn, book);
@@ -49,7 +51,7 @@ public class CachedBookDaoImpl implements BookDao {
     }
   
     @Override 
-    @CacheEvict(cacheNames = "books")
+    @CacheRemove(cacheName = "books")
     public void deleteBook(String isbn) {
         if (null != isbn && bookDatabase.containsKey(isbn)) {
             bookDatabase.remove(isbn);
